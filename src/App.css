@@ -1,0 +1,199 @@
+/* --- Global Body Setup --- */
+body {
+  background: radial-gradient(circle at center, #f3f4f6 0%, #ffffff 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+/* --- THE REAL CASIO CHASSIS --- */
+.calculator {
+  width: 340px;
+  background: linear-gradient(135deg, #000917 0%, #1f2937 100%); /* Classic Casio dark-slate industrial plastic */
+  border-radius: 12px; /* Real calculators have tighter corners */
+  padding: 24px 20px;
+  border: 1px solid #4b5563;
+  border-top-color: #6b7280; /* Subtle top edge lighting */
+  
+  /* Multi-layered shadows for heavy physical object weight */
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 20px 40px -10px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  position: relative;
+}
+
+/* Subtle brand accent lines or texture if needed */
+.calculator::before {
+  content: 'CASIO STYLE';
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  color: #9ca3af;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+/* --- RECESSED PASSIVE LCD SCREEN --- */
+#display {
+  background: #9fa896; /* Authentic retro passive matrix LCD green/gray tint */
+  color: #111827; /* Dark charcoal digital ink */
+  font-family: "Courier New", Courier, monospace;
+  font-size: 32px;
+  font-weight: 700;
+  padding: 16px 14px;
+  border-radius: 6px;
+  text-align: right;
+  min-height: 48px;
+  margin-top: 14px; /* Space for the brand logo */
+  margin-bottom: 24px;
+  word-break: break-all;
+  letter-spacing: -0.05em;
+  
+  /* Inset shadow simulates deep screen recession beneath plastic framing */
+  box-shadow: 
+    inset 0 3px 6px rgba(0, 0, 0, 0.4),
+    inset 0 -1px 3px rgba(255, 255, 255, 0.2),
+    0 1px 2px rgba(255, 255, 255, 0.1);
+  border: 3px solid #111827;
+  position: relative;
+}
+
+/* Simulated protective acrylic glass glare overlay */
+#display::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 60%);
+  pointer-events: none;
+}
+
+/* --- BUTTON GRID PANEL --- */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  background: #000000; /* Inner tray recess background */
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* --- CASIO TACTILE PLASTIC BUTTONS --- */
+button {
+  padding: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  /* Light numeric key styling */
+  background: linear-gradient(180deg, #f3f4f6 0%, #e5e7eb 100%);
+  color: #1f2937;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  
+  /* Authentic chunky mechanical button bevel base shadow */
+  box-shadow:
+    0 3px 0px #9ca3af,
+    0 4px 6px rgba(0, 0, 0, 0.3);
+  
+  transition: transform 0.05s ease, box-shadow 0.05s ease;
+}
+
+/* --- PRESS EFFECT (Physical Compression) --- */
+button:active {
+  transform: translateY(3px); /* Compresses completely into the tray */
+  box-shadow:
+    0 0px 0px #9ca3af,
+    0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Numeric Hover State */
+button:hover {
+  background: linear-gradient(180deg, #ffffff 0%, #f3f4f6 100%);
+}
+
+/* --- MATTE OPERATOR KEYS --- */
+#add,
+#subtract,
+#multiply,
+#divide {
+  background: linear-gradient(180deg, #4b5563 0%, #374151 100%); /* Industrial dark grey operators */
+  color: #ffffff;
+  box-shadow:
+    0 3px 0px #1f2937,
+    0 4px 6px rgba(0, 0, 0, 0.3);
+}
+#add:hover, #subtract:hover, #multiply:hover, #divide:hover {
+  background: linear-gradient(180deg, #6b7280 0%, #4b5563 100%);
+}
+
+/* --- CLEAR BUTTON (Casio Emergency Orange/Red Accent) --- */
+#clear {
+  background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
+  color: white;
+  grid-column: span 2;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  box-shadow:
+    0 3px 0px #7f1d1d,
+    0 4px 6px rgba(0, 0, 0, 0.3);
+}
+#clear:hover {
+  background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+}
+
+/* --- EQUAL BUTTON (Casio Slate Blue Accent) --- */
+#equals {
+  background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
+  color: white;
+  grid-column: span 2;
+  box-shadow:
+    0 3px 0px #1e3a8a,
+    0 4px 6px rgba(0, 0, 0, 0.3);
+}
+#equals:hover {
+  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+}
+.casio-brand-badge {
+  /* Spans across the remaining empty grid columns */
+  grid-column: span 2; 
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  
+  /* Typography styling */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #64748b; /* Sleek slate gray text */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  user-select: none;
+  
+
+  
+  
+}
+
+/* Styled specifically for the bold "CASIO" brand part */
+.casio-brand-badge span {
+  font-size: 13px;
+  font-weight: 900;
+  color: #ffffff; /* Brighter metallic silver */
+  letter-spacing: 0.15em;
+}
+
+/* --- SPANNING LAYOUT FIXED ALIGNMENT --- */
+#zero {
+  grid-column: span 2;
+}
